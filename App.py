@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+from flask import Flask
+
+app = Flask(__name__)
+
+HTML = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -41,7 +45,6 @@ canvas {
     80% { text-shadow: 2px 2px red; }
     100% { text-shadow: -2px -2px lime; }
 }
-
 
 .typing {
     font-size: 20px;
@@ -111,4 +114,11 @@ setInterval(draw, 33);
 </script>
 
 </body>
-</html>
+</html>"""
+
+@app.route("/")
+def index():
+    return HTML
+
+if __name__ == "__main__":
+    app.run(debug=True)
